@@ -15,25 +15,23 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="整理之前写的题解">
+  <meta name="description" content="Git 学习记录">
   <meta name="author" content="liuwei">
   <meta name="keywords" content="">
-  <meta name="description" content="整理之前写的题解">
+  <meta name="description" content="Git 学习记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UVA673题解">
-<meta property="og:url" content="https://www.llsll.xyz/2021/12/20/UVA673%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="Git 学习记录1">
+<meta property="og:url" content="https://www.llsll.xyz/2021/12/30/Git-Learning/index.html">
 <meta property="og:site_name" content="LW&#39;s blog">
-<meta property="og:description" content="整理之前写的题解">
+<meta property="og:description" content="Git 学习记录">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/blackerrr/photos/raw/master/uva673.png">
-<meta property="article:published_time" content="2021-12-20T08:26:38.000Z">
-<meta property="article:modified_time" content="2021-12-22T11:17:40.220Z">
+<meta property="article:published_time" content="2021-12-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-12-30T15:25:54.253Z">
 <meta property="article:author" content="liuwei">
-<meta property="article:tag" content="算法题解">
+<meta property="article:tag" content="学习记录">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gitee.com/blackerrr/photos/raw/master/uva673.png">
   
-  <title>UVA673题解 - LW&#39;s blog</title>
+  <title>Git 学习记录1 - LW&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -191,7 +189,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="UVA673题解">
+            <span class="h2" id="subtitle" title="Git 学习记录1">
               
             </span>
 
@@ -201,8 +199,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-12-20 16:26" pubdate>
-        2021年12月20日 下午
+      <time datetime="2021-12-30 00:00" pubdate>
+        2021年12月30日 凌晨
       </time>
     </span>
   
@@ -212,7 +210,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      945 字
+      3.2k 字
     </span>
   
 
@@ -221,7 +219,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3 分钟
+      10 分钟
     </span>
   
 
@@ -258,24 +256,46 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">UVA673题解</h1>
+            <h1 style="display: none">Git 学习记录1</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年12月22日 晚上
+                  本文最后更新于：2021年12月30日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="uva673">UVA673</h1>
-<p><img src="https://gitee.com/blackerrr/photos/raw/master/uva673.png" srcset="/img/loading.gif" lazyload alt="UVA673" /></p>
-<p>这道题基本就是栈的表达式解析。<br />
-遇到<strong>左括号或者左方括号</strong>就压入栈。<br />
-遇到<strong>右括号或者右方括号</strong>，就从栈顶取出一个值，与该值对比。<br />
-注意当表达式为空时也是正确的。<br />
-注意在提取T后缓存区会有换行符，用 cin.ignore() 消除。</p>
-<p>代码如下<br />
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">judge</span><span class="hljs-params">(<span class="hljs-keyword">char</span> t, <span class="hljs-keyword">char</span> x)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(t == <span class="hljs-string">&#x27;(&#x27;</span> &amp;&amp; x == <span class="hljs-string">&#x27;)&#x27;</span>)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(t == <span class="hljs-string">&#x27;[&#x27;</span> &amp;&amp; x == <span class="hljs-string">&#x27;]&#x27;</span>)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>    <span class="hljs-keyword">int</span> t;<br>    cin&gt;&gt;t;<br>    cin.<span class="hljs-built_in">ignore</span>();<br>    <span class="hljs-keyword">while</span>(t--)&#123;<br>        stack&lt;<span class="hljs-keyword">char</span>&gt; Q;<br>        string line;<br>        <span class="hljs-keyword">char</span> x, temp;<br>        <span class="hljs-keyword">int</span> flag = <span class="hljs-number">1</span>;<br>        <span class="hljs-built_in">getline</span>(cin, line);<br>        <span class="hljs-function">stringstream <span class="hljs-title">ss</span><span class="hljs-params">(line)</span></span>;<br>        <span class="hljs-keyword">while</span>(ss &gt;&gt; x)&#123;<br>            <span class="hljs-keyword">if</span>(x == <span class="hljs-string">&#x27;(&#x27;</span> || x == <span class="hljs-string">&#x27;[&#x27;</span>)&#123;<br>                Q.<span class="hljs-built_in">push</span>(x);<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            <span class="hljs-keyword">if</span>(Q.<span class="hljs-built_in">empty</span>())&#123;<br>                flag = <span class="hljs-number">0</span>;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            temp = Q.<span class="hljs-built_in">top</span>();<br>            Q.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">judge</span>(temp, x))&#123;<br>                flag = <span class="hljs-number">0</span>;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(flag &amp;&amp; Q.<span class="hljs-built_in">empty</span>())<br>            cout&lt;&lt;<span class="hljs-string">&quot;Yes&quot;</span>&lt;&lt;endl;<br>        <span class="hljs-keyword">else</span><br>            cout&lt;&lt;<span class="hljs-string">&quot;No&quot;</span>&lt;&lt;endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+              <h1 id="git-学习记录">Git 学习记录</h1>
+<p>[TOC]</p>
+<h2 id="删除远程仓库的分支">删除远程仓库的分支</h2>
+<h3 id="git-push--h查看帮助"><code>git push -h</code>查看帮助</h3>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">(base) PS D:\Blog\markdown&gt; git push -h<br>usage: git push [&lt;options&gt;] [&lt;repository&gt; [&lt;refspec&gt;...]]<br><br>    -v, <span class="hljs-comment">--verbose         be more verbose</span><br>    -q, <span class="hljs-comment">--quiet           be more quiet</span><br>    <span class="hljs-comment">--repo &lt;repository&gt;   repository</span><br>    <span class="hljs-comment">--all                 push all refs</span><br>    <span class="hljs-comment">--mirror              mirror all refs</span><br>    -d, <span class="hljs-comment">--delete          delete refs</span><br>    <span class="hljs-comment">--tags                push tags (can&#x27;t be used with --all or --mirror)</span><br>    -n, <span class="hljs-comment">--dry-run         dry run</span><br>    <span class="hljs-comment">--porcelain           machine-readable output</span><br>    -f, <span class="hljs-comment">--force           force updates</span><br>    <span class="hljs-comment">--force-with-lease[=&lt;refname&gt;:&lt;expect&gt;]</span><br>                          <span class="hljs-built_in">require</span> old <span class="hljs-built_in">value</span> <span class="hljs-keyword">of</span> ref <span class="hljs-built_in">to</span> be <span class="hljs-keyword">at</span> this <span class="hljs-built_in">value</span><br>    <span class="hljs-comment">--force-if-includes   require remote updates to be integrated locally</span><br>    <span class="hljs-comment">--recurse-submodules (check|on-demand|no)</span><br>                          control recursive pushing <span class="hljs-keyword">of</span> submodules<br>    <span class="hljs-comment">--thin                use thin pack</span><br>    <span class="hljs-comment">--receive-pack &lt;receive-pack&gt;</span><br>                          receive pack program<br>    <span class="hljs-comment">--exec &lt;receive-pack&gt;</span><br>                          receive pack program<br>    -u, <span class="hljs-comment">--set-upstream    set upstream for git pull/status</span><br>    <span class="hljs-comment">--progress            force progress reporting</span><br>    <span class="hljs-comment">--prune               prune locally removed refs</span><br>    <span class="hljs-comment">--no-verify           bypass pre-push hook</span><br>    <span class="hljs-comment">--follow-tags         push missing but relevant tags</span><br>    <span class="hljs-comment">--signed[=(yes|no|if-asked)]</span><br>                          GPG sign <span class="hljs-keyword">the</span> push<br>    <span class="hljs-comment">--atomic              request atomic transaction on remote side</span><br>    -o, <span class="hljs-comment">--push-option &lt;server-specific&gt;</span><br>                          option <span class="hljs-built_in">to</span> transmit<br>    <span class="hljs-number">-4</span>, <span class="hljs-comment">--ipv4            use IPv4 addresses only</span><br>    <span class="hljs-number">-6</span>, <span class="hljs-comment">--ipv6            use IPv6 addresses only</span><br></code></pre></td></tr></table></figure>
+<h3 id="删除分支">删除分支</h3>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">git <span class="hljs-built_in">push</span> <span class="hljs-built_in">origin</span> -d repo_name<br></code></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">git <span class="hljs-built_in">push</span> <span class="hljs-built_in">origin</span> :repo_name<br></code></pre></td></tr></table></figure>
+<p>第二条命令相当于推送一个空的分支到远程，可以实现和第一条命令同样的效果</p>
+<h2 id="改变本地分支的名字">改变本地分支的名字</h2>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git branch -m <span class="hljs-keyword">master</span> <span class="hljs-title">main</span><br></code></pre></td></tr></table></figure>
+<p>将本地的master分支名字改为main</p>
+<h2 id="删除本地分支的文件">删除本地分支的文件</h2>
+<p>使用 <code>git rm，git rm -h</code> 查看帮助</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs smali">(base) PS D:\Blog\markdown&gt; git rm -h<br>usage: git rm [&lt;options&gt;] [--] &lt;file&gt;...<br><br>    -n, --dry-run         dry run<br>    -q, --quiet           do<span class="hljs-built_in"> not </span>list removed files<br>    --cached              only remove from the index<br>    -f, --force           override the up-to-date<span class="hljs-built_in"> check</span><br><span class="hljs-built_in"></span>    -r                    allow recursive removal<br>    --ignore-unmatch      exit with a zero status even<span class="hljs-built_in"> if </span>nothing matched<br>    --sparse              allow updating entries outside of the<span class="hljs-built_in"> sparse-checkout </span>cone<br>    --pathspec-from-file &lt;file&gt;<br>                          read pathspec from file<br>    --pathspec-file-nul   with --pathspec-from-file, pathspec elements are separated with NUL character<br></code></pre></td></tr></table></figure>
+<h3 id="delete-files-from-repository-filesystem">Delete Files From Repository + Filesystem</h3>
+<p><code>git rm = delete files from repository + filesystem</code></p>
+<p><code>git rm filename</code></p>
+<p>执行完<code>git rm</code> 之后文件首先会从本地删除，当你 commit 之后，文件就会从你的repository中删除</p>
+<h3 id="delete-files-recursively-on-git">Delete Files Recursively on Git</h3>
+<p><code>git rm -r folder</code></p>
+<p>该命令可以递归删除文件夹。同样，执行之后首先会在本地删除，当完成push之后，文件夹就会从你的repository中删除</p>
+<h3 id="delete-files-from-git-repository-only">Delete Files From Git Repository Only</h3>
+<p><code>git rm --cached filename</code> 可以将文件从你的repository中删除，而在文件系统中保留文件。同样，要删除在远程仓库中的文件，push时必不可少的。</p>
+<h3 id="delete-files-from-git-history">Delete Files From Git History</h3>
+<p><code>git filter-branch -f --prune-empty --index-filter &quot;git rm -r --cached --ignore-unmatch ./file1&quot; HEAD</code></p>
+<h2 id="git-如何删除已经-add的文件">Git 如何删除已经 add的文件</h2>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">git rm <span class="hljs-comment">--cached a.c</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs vhdl">(base) PS D:\speech <span class="hljs-keyword">signal</span> proceeding\speech_recognition&gt; <span class="hljs-keyword">New</span>-Item a.c<br><br>    Directory: D:\speech <span class="hljs-keyword">signal</span> proceeding\speech_recognition<br><br>Mode                 LastWriteTime         Length Name<br><span class="hljs-comment">----                 -------------         ------ ----</span><br>-a<span class="hljs-comment">---          2021/12/30    23:04              0 a.c</span><br><br>(base) PS D:\speech <span class="hljs-keyword">signal</span> proceeding\speech_recognition&gt; git add .\a.c<br>(base) PS D:\speech <span class="hljs-keyword">signal</span> proceeding\speech_recognition&gt; git status<br><span class="hljs-keyword">On</span> branch main<br>Changes <span class="hljs-keyword">to</span> be committed:<br>  (<span class="hljs-keyword">use</span> <span class="hljs-string">&quot;git restore --staged &lt;file&gt;...&quot;</span> <span class="hljs-keyword">to</span> unstage)<br>        <span class="hljs-keyword">new</span> <span class="hljs-keyword">file</span>:   a.c<br><br>(base) PS D:\speech <span class="hljs-keyword">signal</span> proceeding\speech_recognition&gt; git rm <span class="hljs-comment">--cached .\a.c</span><br>rm <span class="hljs-symbol">&#x27;a</span>.c&#x27;<br>(base) PS D:\speech <span class="hljs-keyword">signal</span> proceeding\speech_recognition&gt; git status<br><span class="hljs-keyword">On</span> branch main<br>Untracked files:<br>  (<span class="hljs-keyword">use</span> <span class="hljs-string">&quot;git add &lt;file&gt;...&quot;</span> <span class="hljs-keyword">to</span> include <span class="hljs-keyword">in</span> what will be committed)<br>        a.c<br><br>nothing added <span class="hljs-keyword">to</span> commit but untracked files present (<span class="hljs-keyword">use</span> <span class="hljs-string">&quot;git add&quot;</span> <span class="hljs-keyword">to</span> track)<br></code></pre></td></tr></table></figure>
+<h2 id="git查看本地仓库文件">Git查看本地仓库文件</h2>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">git ls-tree -r <span class="hljs-selector-tag">main</span><br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
@@ -285,7 +305,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                      <a class="hover-with-bg" href="/categories/Git/">Git</a>
                     
                   </div>
                 
@@ -293,7 +313,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/">算法题解</a>
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>
                     
                   </div>
                 
@@ -310,18 +330,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/12/30/Git-Learning/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Git 学习记录1</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/12/18/fibonacci/">
-                        <span class="hidden-mobile">斐波那契数列（特征方程， 通项公式， 公约数）</span>
+                      <a href="/2021/12/20/UVA673%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">UVA673题解</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
