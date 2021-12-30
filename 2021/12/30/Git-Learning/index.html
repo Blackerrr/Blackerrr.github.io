@@ -26,7 +26,7 @@
 <meta property="og:description" content="Git 学习记录">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-12-30T15:25:54.253Z">
+<meta property="article:modified_time" content="2021-12-30T16:40:28.565Z">
 <meta property="article:author" content="liuwei">
 <meta property="article:tag" content="学习记录">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.2k 字
+      3.3k 字
     </span>
   
 
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年12月30日 晚上
+                  本文最后更新于：2021年12月31日 凌晨
                 
               </p>
             
@@ -296,6 +296,9 @@
 <figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs vhdl">(base) PS D:\speech <span class="hljs-keyword">signal</span> proceeding\speech_recognition&gt; <span class="hljs-keyword">New</span>-Item a.c<br><br>    Directory: D:\speech <span class="hljs-keyword">signal</span> proceeding\speech_recognition<br><br>Mode                 LastWriteTime         Length Name<br><span class="hljs-comment">----                 -------------         ------ ----</span><br>-a<span class="hljs-comment">---          2021/12/30    23:04              0 a.c</span><br><br>(base) PS D:\speech <span class="hljs-keyword">signal</span> proceeding\speech_recognition&gt; git add .\a.c<br>(base) PS D:\speech <span class="hljs-keyword">signal</span> proceeding\speech_recognition&gt; git status<br><span class="hljs-keyword">On</span> branch main<br>Changes <span class="hljs-keyword">to</span> be committed:<br>  (<span class="hljs-keyword">use</span> <span class="hljs-string">&quot;git restore --staged &lt;file&gt;...&quot;</span> <span class="hljs-keyword">to</span> unstage)<br>        <span class="hljs-keyword">new</span> <span class="hljs-keyword">file</span>:   a.c<br><br>(base) PS D:\speech <span class="hljs-keyword">signal</span> proceeding\speech_recognition&gt; git rm <span class="hljs-comment">--cached .\a.c</span><br>rm <span class="hljs-symbol">&#x27;a</span>.c&#x27;<br>(base) PS D:\speech <span class="hljs-keyword">signal</span> proceeding\speech_recognition&gt; git status<br><span class="hljs-keyword">On</span> branch main<br>Untracked files:<br>  (<span class="hljs-keyword">use</span> <span class="hljs-string">&quot;git add &lt;file&gt;...&quot;</span> <span class="hljs-keyword">to</span> include <span class="hljs-keyword">in</span> what will be committed)<br>        a.c<br><br>nothing added <span class="hljs-keyword">to</span> commit but untracked files present (<span class="hljs-keyword">use</span> <span class="hljs-string">&quot;git add&quot;</span> <span class="hljs-keyword">to</span> track)<br></code></pre></td></tr></table></figure>
 <h2 id="git查看本地仓库文件">Git查看本地仓库文件</h2>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">git ls-tree -r <span class="hljs-selector-tag">main</span><br></code></pre></td></tr></table></figure>
+<h2 id="解决本地仓库和远程仓库没有一个共同的commitgit-pull-失败问题">解决本地仓库和远程仓库没有一个共同的commit，git pull 失败问题</h2>
+<p>当在github上新建一个<code>repository</code>，仓库里只有一个<code>license</code>和<code>README.md</code>时，此时在本地仓库 执行<code>git pull origin main</code> 会出现报错。解决方法：</p>
+<p><code>git pull origin master --allow-unrelated-histories</code></p>
 
             </div>
             <hr>

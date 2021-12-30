@@ -56,13 +56,6 @@
 
   
   <url>
-    <loc>https://www.llsll.xyz/tags/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/</loc>
-    <lastmod>2021-12-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.llsll.xyz/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2021-12-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -76,17 +69,24 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://www.llsll.xyz/tags/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/</loc>
+    <lastmod>2021-12-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
-    <loc>https://www.llsll.xyz/categories/%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://www.llsll.xyz/categories/Git/</loc>
     <lastmod>2021-12-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.llsll.xyz/categories/Git/</loc>
+    <loc>https://www.llsll.xyz/categories/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2021-12-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
