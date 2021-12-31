@@ -15,42 +15,23 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="Powershell 学习记录">
+  <meta name="description" content="I build it to record ideas and share technology">
   <meta name="author" content="liuwei">
   <meta name="keywords" content="">
-  <meta name="description" content="Powershell 学习记录">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Powershell 学习记录">
-<meta property="og:url" content="https://www.llsll.xyz/2021/12/31/powershell/index.html">
+  <meta name="description" content="I build it to record ideas and share technology">
+<meta property="og:type" content="website">
+<meta property="og:title" content="归档">
+<meta property="og:url" content="https://www.llsll.xyz/archives/1970/index.html">
 <meta property="og:site_name" content="LW&#39;s blog">
-<meta property="og:description" content="Powershell 学习记录">
+<meta property="og:description" content="I build it to record ideas and share technology">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/blackerrr/photos/raw/master/powershell.jpg">
-<meta property="article:published_time" content="2021-12-31T07:44:30.908Z">
-<meta property="article:modified_time" content="2021-12-31T07:39:35.025Z">
 <meta property="article:author" content="liuwei">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gitee.com/blackerrr/photos/raw/master/powershell.jpg">
   
-  <title>Powershell 学习记录 - LW&#39;s blog</title>
+  <title>归档 - LW&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -77,7 +58,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -190,51 +171,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Powershell 学习记录">
+            <span class="h2" id="subtitle" title="归档">
               
             </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-12-31 15:44" pubdate>
-        2021年12月31日 下午
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      638 字
-    </span>
-  
-
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      2 分钟
-    </span>
-  
-
-  
-  
-    
-      <!-- LeanCloud 统计文章PV -->
-      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
-        <i class="iconfont icon-eye" aria-hidden="true"></i>
-        <span id="leancloud-page-views"></span> 次
-      </span>
-    
-  
-</div>
 
             
           </div>
@@ -247,125 +186,40 @@
 
   <main>
     
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">共计 5 篇文章</p>
+  <hr>
+  
+  
+    
       
+      <p class="h5">1970</p>
+    
+    <a href="/1970/01/01/powershell/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Powershell 学习记录</span>
+      <time style="float: right;">01-01</time>
+    </a>
+  
+</div>
 
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">Powershell 学习记录</h1>
-            
-              <p class="note note-info">
-                
-                  本文最后更新于：2021年12月31日 下午
-                
-              </p>
-            
-            <div class="markdown-body">
-              <p>[TOC]</p>
-<h1 id="powershell-学习记录">powershell 学习记录</h1>
-<ol type="1">
-<li><h2 id="为什么不能使用rm--f-命令">为什么不能使用rm -f 命令</h2>
-<p>对于 Remove-Item 的两个参数 -Force，-Filter都以F开头，所以参数没法简写为 -f。最简单的也要写成 -fo，即</p>
-<p>rm -fo filename</p></li>
-<li><h2 id="在powershell下如何删除隐藏文件">在powershell下如何删除隐藏文件</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) PS D:\demo&gt; lla<br><br>    Directory: D:\demo<br><br>Mode                 LastWriteTime         Length Name<br>----                 -------------         ------ ----<br>d--h-          2021/12/31    15:14                .git<br>d----          2021/12/31    14:34                aa<br>-a---          2021/12/31    14:34              0 1.c<br>-a---          2021/12/31    14:32              0 a.txt<br>-a---          2021/12/31    15:06              0 new<br><br>(base) PS D:\demo&gt; rm -r -fo .\.git\<br></code></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="如何在powershell自定义函数">如何在powershell自定义函数</h1>
-<p>首先查看Microsoft.PowerShell_profile.ps1文件地址，然后打开编辑即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) PS D:\demo&gt; <span class="hljs-variable">$PROFILE</span><br>C:\Users\LW\Documents\PowerShell\Microsoft.PowerShell_profile.ps1<br>(base) PS D:\demo&gt; code <span class="hljs-variable">$PROFILE</span><br></code></pre></td></tr></table></figure>
-<p>如下图所示</p>
-<p><img src="https://gitee.com/blackerrr/photos/raw/master/powershell.jpg" srcset="/img/loading.gif" lazyload alt="编辑Microsoft.PowerShell_profile.ps1" /></p>
-<h1 id="我的-powershell-profile文件">我的 powershell profile文件</h1>
-<p>Github地址：<a target="_blank" rel="noopener" href="https://github.com/Blackerrr/WindowPowerShellProfile.git">Blacerrr的repository</a></p>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                
+
+
+
               </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/12/30/Git-Learning/">
-                        <span class="hidden-mobile">Git 学习记录1</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
             </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"QsGrK96fVoTEvV5jcXID1kB4-gzGzoHsz","appKey":"Bb0EjzO9Ya2umqFfV2tep53O","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://qsgrk96f.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
+          </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
 
     
@@ -473,19 +327,6 @@
   
 
 
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
-  
 
 
 
