@@ -33,7 +33,7 @@
     <link href="/2021/12/31/powershell/"/>
     <url>/2021/12/31/powershell/</url>
     
-    <content type="html"><![CDATA[<p>[TOC]</p><h1 id="powershell-学习记录">powershell 学习记录</h1><ol type="1"><li><h2 id="为什么不能使用rm--f-命令">为什么不能使用rm -f 命令</h2><p>对于 Remove-Item 的两个参数 -Force，-Filter都以F开头，所以参数没法简写为 -f。最简单的也要写成 -fo，即</p><p>rm -fo filename</p></li><li><h2 id="在powershell下如何删除隐藏文件">在powershell下如何删除隐藏文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) PS D:\demo&gt; lla<br><br>    Directory: D:\demo<br><br>Mode                 LastWriteTime         Length Name<br>----                 -------------         ------ ----<br>d--h-          2021/12/31    15:14                .git<br>d----          2021/12/31    14:34                aa<br>-a---          2021/12/31    14:34              0 1.c<br>-a---          2021/12/31    14:32              0 a.txt<br>-a---          2021/12/31    15:06              0 new<br><br>(base) PS D:\demo&gt; rm -r -fo .\.git\<br></code></pre></td></tr></table></figure></li></ol><h1 id="如何在powershell自定义函数">如何在powershell自定义函数</h1><p>首先查看Microsoft.PowerShell_profile.ps1文件地址，然后打开编辑即可</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) PS D:\demo&gt; <span class="hljs-variable">$PROFILE</span><br>C:\Users\LW\Documents\PowerShell\Microsoft.PowerShell_profile.ps1<br>(base) PS D:\demo&gt; code <span class="hljs-variable">$PROFILE</span><br></code></pre></td></tr></table></figure><p>如下图所示</p><p><img src="https://gitee.com/blackerrr/photos/raw/master/powershell.jpg" alt="编辑Microsoft.PowerShell_profile.ps1" /></p><h1 id="我的-powershell-profile文件">我的 powershell profile文件</h1><p>Github地址：<a href="https://github.com/Blackerrr/WindowPowerShellProfile.git">Blacerrr的repository</a></p>]]></content>
+    <content type="html"><![CDATA[<p>[TOC]</p><h1 id="powershell-学习记录">powershell 学习记录</h1><ol type="1"><li><h2 id="为什么不能使用rm--f-命令">为什么不能使用rm -f 命令</h2><p>对于 Remove-Item 的两个参数 -Force，-Filter都以F开头，所以参数没法简写为 -f。最简单的也要写成 -fo，即</p><p>rm -fo filename</p></li><li><h2 id="在powershell下如何删除隐藏文件">在powershell下如何删除隐藏文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) PS D:\demo&gt; lla<br><br>    Directory: D:\demo<br><br>Mode                 LastWriteTime         Length Name<br>----                 -------------         ------ ----<br>d--h-          2021/12/31    15:14                .git<br>d----          2021/12/31    14:34                aa<br>-a---          2021/12/31    14:34              0 1.c<br>-a---          2021/12/31    14:32              0 a.txt<br>-a---          2021/12/31    15:06              0 new<br><br>(base) PS D:\demo&gt; rm -r -fo .\.git\<br></code></pre></td></tr></table></figure></li></ol><h1 id="如何在powershell自定义函数">如何在powershell自定义函数</h1><p>首先查看Microsoft.PowerShell_profile.ps1文件地址，然后打开编辑即可</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) PS D:\demo&gt; <span class="hljs-variable">$PROFILE</span><br>C:\Users\LW\Documents\PowerShell\Microsoft.PowerShell_profile.ps1<br>(base) PS D:\demo&gt; code <span class="hljs-variable">$PROFILE</span><br></code></pre></td></tr></table></figure><p>如下图所示</p><p><img src="https://gitee.com/blackerrr/photos/raw/master/powershell.jpg" alt="编辑Microsoft.PowerShell_profile.ps1" /></p><h1 id="我的-powershell-profile文件">我的 powershell profile文件</h1><p>Github地址：<a href="https://github.com/Blackerrr/WindowPowerShellProfile.git">Blacerrr的repo</a></p><p>Gitee地址： <a href="https://gitee.com/blackerrr/WindowPowerShellProfile">Blackerrr的repo</a></p>]]></content>
     
     
     <categories>
@@ -104,31 +104,6 @@
   
   
   <entry>
-    <title>斐波那契数列（特征方程， 通项公式， 公约数）</title>
-    <link href="/2021/12/18/fibonacci/"/>
-    <url>/2021/12/18/fibonacci/</url>
-    
-    <content type="html"><![CDATA[<h3 id="求特征方程">1、求特征方程</h3><p>设有数列 $ c[n] = a * c[n - 1] + b * c[n - 2]$, 假设存在 <span class="math inline">\(x, y\)</span> 满足下式<br /><span class="math display">\[c[n]-x*c[n - 1] = y*(c[n - 1] - x*c[n - 2])\]</span><br />变形得<br /><span class="math display">\[ c[n] = (x + y) * c[n - 1] -xy * c[n - 2]\]</span><br />则对于斐波那契数列则有<br /><span class="math display">\[\begin{eqnarray*}x + y &amp;=&amp; 1 \\-xy&amp;=&amp;1\end{eqnarray*}\]</span></p><p>消去 <span class="math inline">\(y\)</span> 得 <span class="math inline">\(x^2=x+1\)</span></p><p>有根<br /><span class="math display">\[X_{1,2}=\frac{1\pm\sqrt{5}}{2}\]</span></p><p>所以存在 <span class="math inline">\(A, B\)</span> 使<br /><span class="math display">\[c[n] = A \times \left( \frac{1 + \sqrt{5}}{2} \right) ^{n} - B \times \left( \frac{1 - \sqrt{5}}{2} \right) ^{n}\]</span><br />代入<span class="math inline">\(c[0] = 0, c[1] = 1\)</span>,得<br /><span class="math display">\[A = \frac{\sqrt{5}}{5}, B = - \frac{\sqrt{5}}{5}\]</span><br />即通项公式为<br /><span class="math display">\[c[n] = \frac{\sqrt{5}}{5} \times \left(\frac{1 + \sqrt{5}}{2}\right) ^ {n} - \frac{\sqrt{5}}{5} \times \left(\frac{1 - \sqrt{5}}{2}\right) ^ {n}\]</span></p><h5 id="tips">Tips</h5><blockquote><p>这公式一般不用再程序题中， 因为有无理数无法保证精度</p></blockquote><h3 id="公约数">2、公约数</h3><blockquote><p><span class="math display">\[gcd(F[n], F[m]) = F[gcd(n, m)]\]</span></p></blockquote><h4 id="证明">证明：</h4><p>设<span class="math inline">\(n &lt; m, F[n] = a, F[n + 1] = b\)</span>,则有<br /><span class="math display">\[\begin{eqnarray*}F[n + 2] &amp;=&amp; a + b \\F[n + 3] &amp;=&amp; a + 2b \\F[n + 4] &amp;=&amp; 2a + 3b\\F[n + 5] &amp;=&amp; 3a + 5b\\  \cdots &amp;=&amp; \cdots   \end{eqnarray*}\]</span><br />则有<br /><span class="math display">\[F[m] = F[m-n-1] \times F[n] + F[m-n] \times F[n+1]\]</span></p><p><span class="math display">\[gcd(F[n],F[m]) = gcd(F[n],  F[m - n -1] \times F[n] + F[m - n] \times F[n + 1] )\]</span></p><p>化简则有<br /><span class="math display">\[gcd(F[n], F[m]) = gcd(F[n],  F[m - n] \times F[n + 1] )\]</span><br />由于<br /><span class="math display">\[gcd(F[n], F[n + 1]) = 1\]</span><br />可得<br /><span class="math display">\[gcd(F[n], F[m]) = gcd(F[n],  F[m - n])\]</span><br />即<br /><span class="math display">\[gcd(F[n], F[m]) = gcd(F[n],  F[m \mod  n])\]</span></p><p>令<br /><span class="math display">\[m1 = m\mod n\]</span></p><p>有<br /><span class="math display">\[gcd(F[n], F[m]) = gcd(F[n \mod m1],  F[m1])\]</span><br />一直递归可得<br /><span class="math display">\[gcd(F[n], F[m]) = gcd(F[gcd(n, m)], 0)\]</span><br />所以有<br /><span class="math display">\[gcd(F[n], F[m]) = F[gcd(n, m)]\]</span></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>算法</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>书籍记录</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>二进制中1的个数</title>
     <link href="/2021/12/18/%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/"/>
     <url>/2021/12/18/%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/</url>
@@ -154,11 +129,36 @@
   
   
   <entry>
+    <title>斐波那契数列（特征方程， 通项公式， 公约数）</title>
+    <link href="/2021/12/18/fibonacci/"/>
+    <url>/2021/12/18/fibonacci/</url>
+    
+    <content type="html"><![CDATA[<h3 id="求特征方程">1、求特征方程</h3><p>设有数列 $ c[n] = a * c[n - 1] + b * c[n - 2]$, 假设存在 <span class="math inline">\(x, y\)</span> 满足下式<br /><span class="math display">\[c[n]-x*c[n - 1] = y*(c[n - 1] - x*c[n - 2])\]</span><br />变形得<br /><span class="math display">\[ c[n] = (x + y) * c[n - 1] -xy * c[n - 2]\]</span><br />则对于斐波那契数列则有<br /><span class="math display">\[\begin{eqnarray*}x + y &amp;=&amp; 1 \\-xy&amp;=&amp;1\end{eqnarray*}\]</span></p><p>消去 <span class="math inline">\(y\)</span> 得 <span class="math inline">\(x^2=x+1\)</span></p><p>有根<br /><span class="math display">\[X_{1,2}=\frac{1\pm\sqrt{5}}{2}\]</span></p><p>所以存在 <span class="math inline">\(A, B\)</span> 使<br /><span class="math display">\[c[n] = A \times \left( \frac{1 + \sqrt{5}}{2} \right) ^{n} - B \times \left( \frac{1 - \sqrt{5}}{2} \right) ^{n}\]</span><br />代入<span class="math inline">\(c[0] = 0, c[1] = 1\)</span>,得<br /><span class="math display">\[A = \frac{\sqrt{5}}{5}, B = - \frac{\sqrt{5}}{5}\]</span><br />即通项公式为<br /><span class="math display">\[c[n] = \frac{\sqrt{5}}{5} \times \left(\frac{1 + \sqrt{5}}{2}\right) ^ {n} - \frac{\sqrt{5}}{5} \times \left(\frac{1 - \sqrt{5}}{2}\right) ^ {n}\]</span></p><h5 id="tips">Tips</h5><blockquote><p>这公式一般不用再程序题中， 因为有无理数无法保证精度</p></blockquote><h3 id="公约数">2、公约数</h3><blockquote><p><span class="math display">\[gcd(F[n], F[m]) = F[gcd(n, m)]\]</span></p></blockquote><h4 id="证明">证明：</h4><p>设<span class="math inline">\(n &lt; m, F[n] = a, F[n + 1] = b\)</span>,则有<br /><span class="math display">\[\begin{eqnarray*}F[n + 2] &amp;=&amp; a + b \\F[n + 3] &amp;=&amp; a + 2b \\F[n + 4] &amp;=&amp; 2a + 3b\\F[n + 5] &amp;=&amp; 3a + 5b\\  \cdots &amp;=&amp; \cdots   \end{eqnarray*}\]</span><br />则有<br /><span class="math display">\[F[m] = F[m-n-1] \times F[n] + F[m-n] \times F[n+1]\]</span></p><p><span class="math display">\[gcd(F[n],F[m]) = gcd(F[n],  F[m - n -1] \times F[n] + F[m - n] \times F[n + 1] )\]</span></p><p>化简则有<br /><span class="math display">\[gcd(F[n], F[m]) = gcd(F[n],  F[m - n] \times F[n + 1] )\]</span><br />由于<br /><span class="math display">\[gcd(F[n], F[n + 1]) = 1\]</span><br />可得<br /><span class="math display">\[gcd(F[n], F[m]) = gcd(F[n],  F[m - n])\]</span><br />即<br /><span class="math display">\[gcd(F[n], F[m]) = gcd(F[n],  F[m \mod  n])\]</span></p><p>令<br /><span class="math display">\[m1 = m\mod n\]</span></p><p>有<br /><span class="math display">\[gcd(F[n], F[m]) = gcd(F[n \mod m1],  F[m1])\]</span><br />一直递归可得<br /><span class="math display">\[gcd(F[n], F[m]) = gcd(F[gcd(n, m)], 0)\]</span><br />所以有<br /><span class="math display">\[gcd(F[n], F[m]) = F[gcd(n, m)]\]</span></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>书籍记录</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>python 语音识别</title>
     <link href="/2021/01/03/speech_recogniton/"/>
     <url>/2021/01/03/speech_recogniton/</url>
     
-    <content type="html"><![CDATA[<p>[TOC]</p><h1 id="python-语音识别">Python 语音识别</h1><p>利用Pyqt5 设计UI界面。如下图：</p><p><img src="https://gitee.com/blackerrr/photos/raw/master/speech-ui.jpg" alt="UI界面" /></p><p>借助百度的api服务，普通话和英语在发音标准的情况下识别率可以在90%以上，但方言的识别效果不是很理想。</p><p>完整代码见我的github仓库：<a href="https://github.com/Blackerrr/Speech-recognition">Blackerrr的repo</a></p><h1 id="记录一下在用python做语音识别时学到的东西">记录一下在用python做语音识别时学到的东西</h1><h2 id="pyinstaller-生成可执行文件">pyinstaller 生成可执行文件</h2><p><code>pyinstaller -F -w .\recognition.py</code></p><p>-<code>F</code> 表示生成单个可执行文件（<code>exe</code>）</p><p>-<code>w</code> 表示生成桌面程序，去掉命令行黑框</p><hr /><h2 id="利用pyuic5-将ui文件转为py文件">利用<code>pyuic5</code> 将<code>ui</code>文件转为<code>py</code>文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">pyuic5 -o destination.py source.ui<br></code></pre></td></tr></table></figure><p>其中<code>-o</code>表示生成一个文件</p><h2 id="ffmpeg-安装">ffmpeg 安装</h2><p>一个有效的教程： <a href="https://www.wikihow.com/Install-FFmpeg-on-Windows">How to install ffmpeg on windows</a></p>]]></content>
+    <content type="html"><![CDATA[<p>[TOC]</p><h1 id="python-语音识别">Python 语音识别</h1><p>利用Pyqt5 设计UI界面。如下图：</p><p><img src="https://gitee.com/blackerrr/photos/raw/master/speech-ui.jpg" alt="UI界面" /></p><p>借助百度的api服务，普通话和英语在发音标准的情况下识别率可以在90%以上，但方言的识别效果不是很理想。</p><p>完整代码：</p><p>​ github仓库：<a href="https://github.com/Blackerrr/Speech-recognition">Blackerrr的repo</a></p><p>​ Gitee仓库：<a href="https://gitee.com/blackerrr/Speech-recognition">Blackerrr的repo</a></p><h1 id="记录一下在用python做语音识别时学到的东西">记录一下在用python做语音识别时学到的东西</h1><h2 id="pyinstaller-生成可执行文件">pyinstaller 生成可执行文件</h2><p><code>pyinstaller -F -w .\recognition.py</code></p><p>-<code>F</code> 表示生成单个可执行文件（<code>exe</code>）</p><p>-<code>w</code> 表示生成桌面程序，去掉命令行黑框</p><hr /><h2 id="利用pyuic5-将ui文件转为py文件">利用<code>pyuic5</code> 将<code>ui</code>文件转为<code>py</code>文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">pyuic5 -o destination.py source.ui<br></code></pre></td></tr></table></figure><p>其中<code>-o</code>表示生成一个文件</p><h2 id="ffmpeg-安装">ffmpeg 安装</h2><p>一个有效的教程： <a href="https://www.wikihow.com/Install-FFmpeg-on-Windows">How to install ffmpeg on windows</a></p>]]></content>
     
     
     <categories>
