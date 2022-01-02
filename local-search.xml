@@ -29,6 +29,31 @@
   
   
   <entry>
+    <title>Powershell 学习记录</title>
+    <link href="/2021/12/31/powershell/"/>
+    <url>/2021/12/31/powershell/</url>
+    
+    <content type="html"><![CDATA[<p>[TOC]</p><h1 id="powershell-学习记录">powershell 学习记录</h1><ol type="1"><li><h2 id="为什么不能使用rm--f-命令">为什么不能使用rm -f 命令</h2><p>对于 Remove-Item 的两个参数 -Force，-Filter都以F开头，所以参数没法简写为 -f。最简单的也要写成 -fo，即</p><p>rm -fo filename</p></li><li><h2 id="在powershell下如何删除隐藏文件">在powershell下如何删除隐藏文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) PS D:\demo&gt; lla<br><br>    Directory: D:\demo<br><br>Mode                 LastWriteTime         Length Name<br>----                 -------------         ------ ----<br>d--h-          2021/12/31    15:14                .git<br>d----          2021/12/31    14:34                aa<br>-a---          2021/12/31    14:34              0 1.c<br>-a---          2021/12/31    14:32              0 a.txt<br>-a---          2021/12/31    15:06              0 new<br><br>(base) PS D:\demo&gt; rm -r -fo .\.git\<br></code></pre></td></tr></table></figure></li></ol><h1 id="如何在powershell自定义函数">如何在powershell自定义函数</h1><p>首先查看Microsoft.PowerShell_profile.ps1文件地址，然后打开编辑即可</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) PS D:\demo&gt; <span class="hljs-variable">$PROFILE</span><br>C:\Users\LW\Documents\PowerShell\Microsoft.PowerShell_profile.ps1<br>(base) PS D:\demo&gt; code <span class="hljs-variable">$PROFILE</span><br></code></pre></td></tr></table></figure><p>如下图所示</p><p><img src="https://gitee.com/blackerrr/photos/raw/master/powershell.jpg" alt="编辑Microsoft.PowerShell_profile.ps1" /></p><h1 id="我的-powershell-profile文件">我的 powershell profile文件</h1><p>Github地址：<a href="https://github.com/Blackerrr/WindowPowerShellProfile.git">Blacerrr的repository</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>PowerShell</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学习记录</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Git 学习记录1</title>
     <link href="/2021/12/30/Git-Learning/"/>
     <url>/2021/12/30/Git-Learning/</url>
@@ -146,31 +171,6 @@
     <tags>
       
       <tag>学习记录</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Powershell 学习记录</title>
-    <link href="/1970/01/01/powershell/"/>
-    <url>/1970/01/01/powershell/</url>
-    
-    <content type="html"><![CDATA[<p>[TOC]</p><h1 id="powershell-学习记录">powershell 学习记录</h1><ol type="1"><li><h2 id="为什么不能使用rm--f-命令">为什么不能使用rm -f 命令</h2><p>对于 Remove-Item 的两个参数 -Force，-Filter都以F开头，所以参数没法简写为 -f。最简单的也要写成 -fo，即</p><p>rm -fo filename</p></li><li><h2 id="在powershell下如何删除隐藏文件">在powershell下如何删除隐藏文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) PS D:\demo&gt; lla<br><br>    Directory: D:\demo<br><br>Mode                 LastWriteTime         Length Name<br>----                 -------------         ------ ----<br>d--h-          2021/12/31    15:14                .git<br>d----          2021/12/31    14:34                aa<br>-a---          2021/12/31    14:34              0 1.c<br>-a---          2021/12/31    14:32              0 a.txt<br>-a---          2021/12/31    15:06              0 new<br><br>(base) PS D:\demo&gt; rm -r -fo .\.git\<br></code></pre></td></tr></table></figure></li></ol><h1 id="如何在powershell自定义函数">如何在powershell自定义函数</h1><p>首先查看Microsoft.PowerShell_profile.ps1文件地址，然后打开编辑即可</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">(base) PS D:\demo&gt; <span class="hljs-variable">$PROFILE</span><br>C:\Users\LW\Documents\PowerShell\Microsoft.PowerShell_profile.ps1<br>(base) PS D:\demo&gt; code <span class="hljs-variable">$PROFILE</span><br></code></pre></td></tr></table></figure><p>如下图所示</p><p><img src="https://gitee.com/blackerrr/photos/raw/master/powershell.jpg" alt="编辑Microsoft.PowerShell_profile.ps1" /></p><h1 id="我的-powershell-profile文件">我的 powershell profile文件</h1><p>Github地址：<a href="https://github.com/Blackerrr/WindowPowerShellProfile.git">Blacerrr的repository</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>-PowerShell</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>-学习记录</tag>
       
     </tags>
     
