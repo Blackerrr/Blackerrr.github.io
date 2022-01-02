@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>SSH 加速</title>
+    <link href="/2022/01/03/github-accelerate/"/>
+    <url>/2022/01/03/github-accelerate/</url>
+    
+    <content type="html"><![CDATA[<h1 id="github-ssh加速">github ssh加速</h1><h2 id="加速后的下载速度">加速后的下载速度</h2><p><img src="https://gitee.com/blackerrr/photos/raw/master/ssh_speed.jpg" /></p><h2 id="how-to-do">How to do?</h2><ol type="1"><li><p>首先你需要一个代理</p></li><li><p>查看自己socks5的端口</p><p><img src="https://gitee.com/blackerrr/photos/raw/master/socks5.jpg" /></p></li><li><p>运行如下命令</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">git config --global http.https:<span class="hljs-regexp">//gi</span>thub.com.proxy socks5:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:你的端口号<br>git config --global https.https:<span class="hljs-regexp">//gi</span>thub.com.proxy socks5:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:你的端口号<br></code></pre></td></tr></table></figure><p>比如我的端口号是1081，那运行的是：</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">git config --global http.https:<span class="hljs-regexp">//gi</span>thub.com.proxy socks5:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">1081</span><br>git config --global https.https:<span class="hljs-regexp">//gi</span>thub.com.proxy socks5:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">1081</span><br></code></pre></td></tr></table></figure></li><li><p>试试速度</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>Git</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学习记录</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Git 学习记录1</title>
     <link href="/2021/12/30/Git-Learning/"/>
     <url>/2021/12/30/Git-Learning/</url>
@@ -96,6 +121,31 @@
     <tags>
       
       <tag>书籍记录</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>python 语音识别</title>
+    <link href="/2021/01/03/speech_recogniton/"/>
+    <url>/2021/01/03/speech_recogniton/</url>
+    
+    <content type="html"><![CDATA[<p>[TOC]</p><h1 id="python-语音识别">Python 语音识别</h1><p>利用Pyqt5 设计UI界面。如下图：</p><p><img src="https://gitee.com/blackerrr/photos/raw/master/speech-ui.jpg" alt="UI界面" /></p><p>借助百度的api服务，普通话和英语在发音标准的情况下识别率可以在90%以上，但方言的识别效果不是很理想。</p><p>完整代码见我的github仓库：<a href="https://github.com/Blackerrr/Speech-recognition">Blackerrr的repo</a></p><h1 id="记录一下在用python做语音识别时学到的东西">记录一下在用python做语音识别时学到的东西</h1><h2 id="pyinstaller-生成可执行文件">pyinstaller 生成可执行文件</h2><p><code>pyinstaller -F -w .\recognition.py</code></p><p>-<code>F</code> 表示生成单个可执行文件（<code>exe</code>）</p><p>-<code>w</code> 表示生成桌面程序，去掉命令行黑框</p><hr /><h2 id="利用pyuic5-将ui文件转为py文件">利用<code>pyuic5</code> 将<code>ui</code>文件转为<code>py</code>文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">pyuic5 -o destination.py source.ui<br></code></pre></td></tr></table></figure><p>其中<code>-o</code>表示生成一个文件</p><h2 id="ffmpeg-安装">ffmpeg 安装</h2><p>一个有效的教程： <a href="https://www.wikihow.com/Install-FFmpeg-on-Windows">How to install ffmpeg on windows</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学习记录</tag>
       
     </tags>
     

@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.llsll.xyz/2022/01/03/github-accelerate/</loc>
+    
+    <lastmod>2022-01-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.llsll.xyz/2021/01/03/speech_recogniton/</loc>
+    
+    <lastmod>2022-01-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.llsll.xyz/1970/01/01/powershell/</loc>
     
     <lastmod>2021-12-31</lastmod>
@@ -65,6 +83,13 @@
 
   
   <url>
+    <loc>https://www.llsll.xyz/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2022-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.llsll.xyz/tags/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/</loc>
     <lastmod>2022-01-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -85,21 +110,7 @@
     <priority>0.2</priority>
   </url>
   
-  <url>
-    <loc>https://www.llsll.xyz/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2022-01-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
 
-  
-  <url>
-    <loc>https://www.llsll.xyz/categories/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2022-01-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
   
   <url>
     <loc>https://www.llsll.xyz/categories/Git/</loc>
@@ -109,7 +120,21 @@
   </url>
   
   <url>
+    <loc>https://www.llsll.xyz/categories/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2022-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.llsll.xyz/categories/PowerShell/</loc>
+    <lastmod>2022-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.llsll.xyz/categories/python/</loc>
     <lastmod>2022-01-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
