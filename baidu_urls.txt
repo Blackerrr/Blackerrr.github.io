@@ -1,3 +1,4 @@
+https://www.llsll.xyz/2022/01/03/python-virtual-env/
 https://www.llsll.xyz/2022/01/03/github-accelerate/
 https://www.llsll.xyz/2021/12/31/powershell/
 https://www.llsll.xyz/2021/12/30/Git-Learning/
