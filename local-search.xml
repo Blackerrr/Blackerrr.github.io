@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>PowerShell 美化</title>
+    <link href="/2022/01/06/on-my-posh/"/>
+    <url>/2022/01/06/on-my-posh/</url>
+    
+    <content type="html"><![CDATA[<p>[TOC]</p><h1 id="powershell-美化">PowerShell 美化</h1><h2 id="我的powershell">我的PowerShell</h2><p><img src="https://gitee.com/blackerrr/photos/raw/master/my-beautiful-powershell.jpg" alt="我的powershell" /></p><h3 id="如何实现">如何实现</h3><p>实现上面的效果，你需要知道：</p><ul><li><p>windows terminal: <a href="https://docs.microsoft.com/en-us/windows/terminal/">Micosoft windows terminal docs</a></p></li><li><p>oh-my-posh: <a href="https://ohmyposh.dev/">oh-my-posh</a></p></li><li><p>posh-git: <a href="https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-PowerShell">posh-git</a></p></li></ul><h3 id="主题推荐">主题推荐</h3><ul><li><p>这里推荐的5个主题都不错： <a href="https://sspai.com/post/52907">少数派的5个主题</a></p></li><li><p>我的主题是Agnoster，非常nice</p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>PowerShell</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学习记录</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Winget</title>
+    <link href="/2022/01/06/winget/"/>
+    <url>/2022/01/06/winget/</url>
+    
+    <content type="html"><![CDATA[<p>[TOC]</p><h1 id="winget">winget</h1><h2 id="问题一failed-in-attempting-to-update-the-source">问题一：Failed in attempting to update the source</h2><ul><li>解决方法 <code>winget source reset --force</code></li><li>我解决这个问题看的文章：<a href="https://github.com/microsoft/winget-cli/issues/1656">github issue1656</a></li><li>winget 官方帮助页面：<a href="https://aka.ms/winget-command-source">winget帮助页面</a></li></ul><h2 id="安装软件步骤以gsudo为例">安装软件步骤（以gsudo为例）</h2><ol type="1"><li><p>先用 <code>winget search</code> 找到包准确的名字</p></li><li><p><code>winget install</code> 安装，-<code>l</code> 是 --<code>location</code>的简写，指自定义文件夹</p></li><li><p>如下图所示，因为<code>gsudo</code>我已经装过了，我就不运行第二个命令了</p><p><img src="https://gitee.com/blackerrr/photos/raw/master/winget.jpg" /></p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学习记录</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Python 虚拟环境管理</title>
     <link href="/2022/01/03/python-virtual-env/"/>
     <url>/2022/01/03/python-virtual-env/</url>
