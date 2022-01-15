@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>树莓派倒腾记录</title>
+    <link href="/2022/01/15/raspberry/"/>
+    <url>/2022/01/15/raspberry/</url>
+    
+    <content type="html"><![CDATA[<h1 id="记录一下树莓派倒腾记录">记录一下树莓派倒腾记录</h1><ul><li><p>树莓派是在大三上买的，买回来之后，玩了一周，就一直吃灰。现在趁寒假，准备好好的折腾一番。（2022年1月15日）</p></li><li><p>一月十四日晚重新折腾了一下，基本算是重新开始。算是将树莓派基本的东西弄好了：sd卡镜像烧录，联网，更改用户名和密码，换源，vim配置，软件更新，顺便试了一下摄像头。bingo</p></li><li><p>记录一下树莓派开启监控</p><ol type="1"><li>参考文章:<a href="https://dsx2016.com/?p=1853">大师兄的文章</a></li><li>配置文件位置 /etc/motion/motion.conf</li><li>视频存放位置 /etc/lib/motion/</li><li>如何看监控 http://192.168.0.103:8081/, 具体端口号是在motion.conf里设置的</li></ol></li><li><p>vim插件管理: Plug</p><ol type="1"><li>参考文章： <a href="https://github.com/junegunn/vim-plug">vim-plug</a></li></ol></li><li><p>树莓派操控gpio</p><ol type="1"><li>参考文章：<a href="https://www.waveshare.net/study/article-600-1.html">微雪课堂</a>，里面介绍了两种方式，shell脚本和C语言。</li></ol></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>树莓派</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>嵌入式</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>PowerShell 美化</title>
     <link href="/2022/01/06/on-my-posh/"/>
     <url>/2022/01/06/on-my-posh/</url>
