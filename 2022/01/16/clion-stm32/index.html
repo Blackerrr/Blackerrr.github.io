@@ -25,13 +25,13 @@
 <meta property="og:site_name" content="LW&#39;s blog">
 <meta property="og:description" content="clion倒腾stm32开发，最后失败，可以build，但是用jlink烧录时与keil会冲突。我不想彻底放弃keil，所以宣告失败">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/blackerrr/photos/raw/master/jlink.jpg">
+<meta property="og:image" content="https://gitee.com/blackerrr/photos/raw/master/photo/jlink.jpg">
 <meta property="article:published_time" content="2022-01-16T08:12:14.913Z">
-<meta property="article:modified_time" content="2022-01-16T06:50:31.528Z">
+<meta property="article:modified_time" content="2022-01-16T08:14:23.847Z">
 <meta property="article:author" content="liuwei">
 <meta property="article:tag" content="嵌入式">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gitee.com/blackerrr/photos/raw/master/jlink.jpg">
+<meta name="twitter:image" content="https://gitee.com/blackerrr/photos/raw/master/photo/jlink.jpg">
   
   <title>clion 倒腾stm32开发 - LW&#39;s blog</title>
 
@@ -264,7 +264,7 @@
 <li><p>倒腾主要参考文档: <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/145801160">稚晖君的教程</a></p></li>
 <li><p>clion倒腾stm32如果去看官网文档的话，官网里的写的大多数都不适用，可能是clion版本的问题(毕竟没钱用正版，不可能用最新版的clion)，有用的还是别人的经验文档。</p></li>
 <li><p>如果用openocd烧录的话，需要将jlink 驱动更新为winusb。但更新后其他软件就无法识别jlink了，比如keil。目前我还没有找到解决方法，暂时记录一下。Zadig软件下载地址： <a target="_blank" rel="noopener" href="https://zadig.akeo.ie/">Zadig</a></p>
-<p><img src="https://gitee.com/blackerrr/photos/raw/master/jlink.jpg" srcset="/img/loading.gif" lazyload alt="jlink更改驱动" /></p></li>
+<p><img src="https://gitee.com/blackerrr/photos/raw/master/photo/jlink.jpg" srcset="/img/loading.gif" lazyload alt="jlink更改驱动" /></p></li>
 <li><p>使用clion需要自己写配置文件，比如<code>jlink.cfg</code></p></li>
 </ul>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># choose st-link/j-link/dap-link etc.</span><br><span class="hljs-comment">#adapter driver cmsis-dap</span><br><span class="hljs-comment">#transport select swd</span><br>source [<span class="hljs-builtin-name">find</span> interface/jlink.cfg]<br>transport select swd<br><br><span class="hljs-comment"># 0x10000 = 64K Flash Size</span><br><span class="hljs-comment"># set FLASH_SIZE 0x80000</span><br><br>source [<span class="hljs-builtin-name">find</span> target/stm32f1x.cfg]<br><span class="hljs-comment"># download speed = 10MHz</span><br><br><span class="hljs-comment"># adapter speed 1000</span><br></code></pre></td></tr></table></figure>
