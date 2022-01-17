@@ -25,14 +25,14 @@
 <meta property="og:site_name" content="LW&#39;s blog">
 <meta property="og:description" content="SSH 加速">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/blackerrr/photos/raw/master/ssh_speed.jpg">
-<meta property="og:image" content="https://gitee.com/blackerrr/photos/raw/master/socks5.jpg">
+<meta property="og:image" content="https://gitee.com/blackerrr/photos/raw/master/photo/ssh_speed.jpg">
+<meta property="og:image" content="https://gitee.com/blackerrr/photos/raw/master/photo/socks5.jpg">
 <meta property="article:published_time" content="2022-01-02T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-01-02T16:50:45.212Z">
+<meta property="article:modified_time" content="2022-01-17T15:30:43.404Z">
 <meta property="article:author" content="liuwei">
 <meta property="article:tag" content="学习记录">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gitee.com/blackerrr/photos/raw/master/ssh_speed.jpg">
+<meta name="twitter:image" content="https://gitee.com/blackerrr/photos/raw/master/photo/ssh_speed.jpg">
   
   <title>SSH 加速 - LW&#39;s blog</title>
 
@@ -255,19 +255,19 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年1月3日 凌晨
+                  本文最后更新于：2022年1月17日 晚上
                 
               </p>
             
             <div class="markdown-body">
               <h1 id="github-ssh加速">github ssh加速</h1>
 <h2 id="加速后的下载速度">加速后的下载速度</h2>
-<p><img src="https://gitee.com/blackerrr/photos/raw/master/ssh_speed.jpg" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://gitee.com/blackerrr/photos/raw/master/photo/ssh_speed.jpg" srcset="/img/loading.gif" lazyload /></p>
 <h2 id="how-to-do">How to do?</h2>
 <ol type="1">
 <li><p>首先你需要一个代理</p></li>
 <li><p>查看自己socks5的端口</p>
-<p><img src="https://gitee.com/blackerrr/photos/raw/master/socks5.jpg" srcset="/img/loading.gif" lazyload /></p></li>
+<p><img src="https://gitee.com/blackerrr/photos/raw/master/photo/socks5.jpg" srcset="/img/loading.gif" lazyload /></p></li>
 <li><p>运行如下命令</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">git config --global http.https:<span class="hljs-regexp">//gi</span>thub.com.proxy socks5:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:你的端口号<br>git config --global https.https:<span class="hljs-regexp">//gi</span>thub.com.proxy socks5:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:你的端口号<br></code></pre></td></tr></table></figure>
 <p>比如我的端口号是1081，那运行的是：</p>
