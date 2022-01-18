@@ -1,4 +1,3 @@
-https://www.llsll.xyz/2022/01/18/posh_git_slow/
 https://www.llsll.xyz/2022/01/17/stm32_environment/
 https://www.llsll.xyz/2022/01/15/raspberry/
 https://www.llsll.xyz/2022/01/06/on-my-posh/
