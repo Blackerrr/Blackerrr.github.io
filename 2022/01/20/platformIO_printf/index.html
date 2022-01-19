@@ -1,0 +1,523 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="试了大概四种方法，都失败了">
+  <meta name="author" content="liuwei">
+  <meta name="keywords" content="">
+  <meta name="description" content="试了大概四种方法，都失败了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PlatformIO 环境开发STM32，实现printf（待解决）">
+<meta property="og:url" content="https://www.llsll.xyz/2022/01/20/platformIO_printf/index.html">
+<meta property="og:site_name" content="LW&#39;s blog">
+<meta property="og:description" content="试了大概四种方法，都失败了">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/blackerrr/photos/raw/master/photo/printf.jpg">
+<meta property="article:published_time" content="2022-01-19T17:55:01.836Z">
+<meta property="article:modified_time" content="2022-01-19T17:53:53.119Z">
+<meta property="article:author" content="liuwei">
+<meta property="article:tag" content="嵌入式">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/blackerrr/photos/raw/master/photo/printf.jpg">
+  
+  <title>PlatformIO 环境开发STM32，实现printf（待解决） - LW&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.llsll.xyz","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":null,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"QsGrK96fVoTEvV5jcXID1kB4-gzGzoHsz","app_key":"Bb0EjzO9Ya2umqFfV2tep53O","server_url":"https://qsgrk96f.lc-cn-n1-shared.com","path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LW</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="PlatformIO 环境开发STM32，实现printf（待解决）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-20 01:55" pubdate>
+        2022年1月20日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">PlatformIO 环境开发STM32，实现printf（待解决）</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年1月20日 凌晨
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>[TOC]</p>
+<h1 id="platformio-环境开发stm32实现printf">PlatformIO 环境开发STM32，实现printf</h1>
+<h2 id="开发环境">开发环境</h2>
+<ul>
+<li>vscode + PlatformIO</li>
+<li>arm-none-eabi 7.2.1</li>
+<li>STM32ZET6 正点原子精英版</li>
+</ul>
+<h2 id="printf重定向">printf重定向</h2>
+<p>我参考了大概四种方法，都没有成功，不过他们报错的原因是有类似的。如下，</p>
+<p><img src="https://gitee.com/blackerrr/photos/raw/master/photo/printf.jpg" srcset="/img/loading.gif" lazyload /></p>
+<p>就是缺少以上七个函数，我参考了稚晖君的博客：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/145801160">稚晖君的clion配置stm32</a>, 但是还会报 <code>undefined reference to _sbrk</code>的错误。这个今天晚上是解决不了。</p>
+<p>如果明天还是解决不了，就暂时做罢。先做个记录。</p>
+<h2 id="四种实现printf的方法如果在keil中一定勾选-use-miciolib">四种实现printf的方法(如果在keil中，一定勾选 use MicioLIB)</h2>
+<p>前两个会报上图中的错误，后两个只报<code>undefined reference to _sbrk</code>错误</p>
+<ul>
+<li>重写<code>fputs</code>函数，参考了==野火的零死角玩转STM32—固件库版==</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * @description: 重定向 c 库函数 printf 到串口 USARTx，重定向后可使用 printf 函数</span><br><span class="hljs-comment"> * @param &#123;int&#125; ch</span><br><span class="hljs-comment"> * @param &#123;FILE&#125; *f</span><br><span class="hljs-comment"> * @return &#123;*&#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">fputc</span><span class="hljs-params">(<span class="hljs-keyword">int</span> ch, FILE *f)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">/* 发送一个字节数据到串口 USARTx */</span><br>    HAL_UART_Transmit(&amp;huart1, (<span class="hljs-keyword">uint8_t</span> *)&amp;ch, <span class="hljs-number">1</span>, <span class="hljs-number">0xFFFF</span>);<br>    <span class="hljs-keyword">return</span> (ch);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<ul>
+<li>还是重写<code>fputs</code>，不过方式不太一样（参照==正点原子教程==）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> __GNUC__</span><br><span class="hljs-comment">/* With GCC/RAISONANCE, small printf (option LD Linker-&gt;Libraries-&gt;Small printf</span><br><span class="hljs-comment">   set to &#x27;Yes&#x27;) calls __io_putchar() */</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> PUTCHAR_PROTOTYPE int __io_putchar(int ch)</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">else</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">/* __GNUC__ */</span></span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * @brief  Retargets the C library printf function to the USART.</span><br><span class="hljs-comment">  * @param  None</span><br><span class="hljs-comment">  * @retval None</span><br><span class="hljs-comment">  */</span><br>PUTCHAR_PROTOTYPE<br>&#123;<br>    <span class="hljs-comment">/* Place your implementation of fputc here */</span><br>    <span class="hljs-comment">/* e.g. write a character to the EVAL_COM1 and Loop until the end of transmission */</span><br>    HAL_UART_Transmit(&amp;huart1, (<span class="hljs-keyword">uint8_t</span>*)&amp;ch, <span class="hljs-number">1</span>, <span class="hljs-number">0xFFFF</span>);<br><br>    <span class="hljs-keyword">return</span> ch;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<ul>
+<li>参照稚晖君的教程：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/145801160">稚晖君的clion配置stm32</a>，代码如下</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// retarget.c</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;_ansi.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;_syslist.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;errno.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/time.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/times.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;retarget.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdint.h&gt;</span></span><br><br><span class="hljs-comment">// #if !defined(OS_USE_SEMIHOSTING)</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> OS_USE_SEMIHOSTING</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> STDIN_FILENO  0</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> STDOUT_FILENO 1</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> STDERR_FILENO 2</span><br><br>UART_HandleTypeDef *gHuart;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">RetargetInit</span><span class="hljs-params">(UART_HandleTypeDef *huart)</span></span><br><span class="hljs-function"></span>&#123;<br>    gHuart = huart;<br><br>    <span class="hljs-comment">/* Disable I/O buffering for STDOUT stream, so that</span><br><span class="hljs-comment">    * chars are sent out as soon as they are printed. */</span><br>    setvbuf(<span class="hljs-built_in">stdout</span>, <span class="hljs-literal">NULL</span>, _IONBF, <span class="hljs-number">0</span>);<br><br>&#125;<br><br><span class="hljs-keyword">int</span> _isatty(<span class="hljs-keyword">int</span> fd)<br>&#123;<br>    <span class="hljs-keyword">if</span> (fd &gt;= STDIN_FILENO &amp;&amp; fd &lt;= STDERR_FILENO)<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br><br>    errno = EBADF;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-keyword">int</span> _write(<span class="hljs-keyword">int</span> fd, <span class="hljs-keyword">char</span> *ptr, <span class="hljs-keyword">int</span> len)<br>&#123;<br>    HAL_StatusTypeDef hstatus;<br>    <span class="hljs-keyword">if</span> (fd == STDOUT_FILENO || fd == STDERR_FILENO)<br>    &#123;<br>        hstatus = HAL_UART_Transmit(gHuart, (<span class="hljs-keyword">uint8_t</span> *) ptr, len, HAL_MAX_DELAY);<br>        <span class="hljs-keyword">if</span> (hstatus == HAL_OK)<br>            <span class="hljs-keyword">return</span> len;<br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-keyword">return</span> EIO;<br>    &#125;<br>    errno = EBADF;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>&#125;<br><span class="hljs-keyword">int</span> _close(<span class="hljs-keyword">int</span> fd)<br>&#123;<br>    <span class="hljs-keyword">if</span> (fd &gt;= STDIN_FILENO &amp;&amp; fd &lt;= STDERR_FILENO)<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br><br>    errno = EBADF;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>&#125;<br><br><br><span class="hljs-keyword">int</span> _lseek(<span class="hljs-keyword">int</span> fd, <span class="hljs-keyword">int</span> ptr, <span class="hljs-keyword">int</span> dir)<br>&#123;<br>    (<span class="hljs-keyword">void</span>) fd;<br>    (<span class="hljs-keyword">void</span>) ptr;<br>    (<span class="hljs-keyword">void</span>) dir;<br>    errno = EBADF;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>&#125;<br><br><span class="hljs-keyword">int</span> _read(<span class="hljs-keyword">int</span> fd, <span class="hljs-keyword">char</span> *ptr, <span class="hljs-keyword">int</span> len)<br>&#123;<br>    HAL_StatusTypeDef hstatus;<br><br>    <span class="hljs-keyword">if</span> (fd == STDIN_FILENO)<br>    &#123;<br>        hstatus = HAL_UART_Receive(gHuart, (<span class="hljs-keyword">uint8_t</span> *) ptr, <span class="hljs-number">1</span>, HAL_MAX_DELAY);<br>        <span class="hljs-keyword">if</span> (hstatus == HAL_OK)<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-keyword">return</span> EIO;<br>    &#125;<br>    errno = EBADF;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>&#125;<br><br><span class="hljs-keyword">int</span> _fstat(<span class="hljs-keyword">int</span> fd, struct stat *st)<br>&#123;<br>    <span class="hljs-keyword">if</span> (fd &gt;= STDIN_FILENO &amp;&amp; fd &lt;= STDERR_FILENO)<br>    &#123;<br>        st-&gt;st_mode = S_IFCHR;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br><br>    errno = EBADF;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> _RETARGET_H__</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _RETARGET_H__</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;stm32f1xx_hal.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/stat.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">RetargetInit</span><span class="hljs-params">(UART_HandleTypeDef *huart)</span></span>;<br><span class="hljs-keyword">int</span> _isatty(<span class="hljs-keyword">int</span> fd);<br><span class="hljs-keyword">int</span> _write(<span class="hljs-keyword">int</span> fd, <span class="hljs-keyword">char</span> *ptr, <span class="hljs-keyword">int</span> len);<br><span class="hljs-keyword">int</span> _close(<span class="hljs-keyword">int</span> fd);<br><span class="hljs-keyword">int</span> _lseek(<span class="hljs-keyword">int</span> fd, <span class="hljs-keyword">int</span> ptr, <span class="hljs-keyword">int</span> dir);<br><span class="hljs-keyword">int</span> _read(<span class="hljs-keyword">int</span> fd, <span class="hljs-keyword">char</span> *ptr, <span class="hljs-keyword">int</span> len);<br><span class="hljs-keyword">int</span> _fstat(<span class="hljs-keyword">int</span> fd, struct stat *st);<br><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>我在下面代码中的<code>my_printf()</code>等同去<code>printf</code>；参考链接：<a target="_blank" rel="noopener" href="https://electronics.stackexchange.com/questions/206113/how-do-i-use-the-printf-function-on-stm32">How do I use the printf function on STM32?</a></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;stdio.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdarg.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">vprint</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *fmt, va_list argp)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">char</span> string[<span class="hljs-number">200</span>];<br>    <span class="hljs-keyword">if</span>(<span class="hljs-number">0</span> &lt; <span class="hljs-built_in">vsprintf</span>(string,fmt,argp)) <span class="hljs-comment">// build string</span><br>    &#123;<br>        <span class="hljs-built_in">HAL_UART_Transmit</span>(&amp;huart1, (<span class="hljs-keyword">uint8_t</span>*)string, <span class="hljs-built_in">strlen</span>(string), <span class="hljs-number">0xffffff</span>); <span class="hljs-comment">// send message via UART</span><br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">my_printf</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *fmt, ...)</span> <span class="hljs-comment">// custom printf() function</span></span><br><span class="hljs-function"></span>&#123;<br>    va_list argp;<br>    <span class="hljs-built_in">va_start</span>(argp, fmt);<br>    <span class="hljs-built_in">vprint</span>(fmt, argp);<br>    <span class="hljs-built_in">va_end</span>(argp);<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/STM32/">STM32</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/17/stm32_environment/">
+                        <span class="hidden-mobile">STM32开发环境倒腾</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"QsGrK96fVoTEvV5jcXID1kB4-gzGzoHsz","appKey":"Bb0EjzO9Ya2umqFfV2tep53O","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://qsgrk96f.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
