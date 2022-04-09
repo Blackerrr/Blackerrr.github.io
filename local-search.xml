@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Kalman 滤波记录</title>
+    <link href="/2022/04/09/kalman_filter/"/>
+    <url>/2022/04/09/kalman_filter/</url>
+    
+    <content type="html"><![CDATA[<p>[TOC]</p><h1 id="kalman-滤波">kalman 滤波</h1><h2 id="kalman-视频推荐">kalman 视频推荐</h2><ul><li><a href="https://space.bilibili.com/230105574/channel/collectiondetail?sid=6939">Dr can的kalman 全集</a></li></ul><h2 id="参考文章">参考文章</h2><ul><li><p><a href="https://zhuanlan.zhihu.com/p/37750839?utm_source=qq&amp;utm_medium=social&amp;utm_oi=1212073450346704896">卡尔曼滤波中关键参数的调整</a></p></li><li><p><a href="https://zhuanlan.zhihu.com/p/36374943">深度解析卡尔曼滤波在IMU中的使用</a></p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>IMU</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学习记录</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>IIC 调试记录</title>
     <link href="/2022/04/09/iic/"/>
     <url>/2022/04/09/iic/</url>
