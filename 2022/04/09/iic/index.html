@@ -259,7 +259,8 @@
               </p>
             
             <div class="markdown-body">
-              <h1 id="记录一下自己在调试iic的时候遇到的问题">记录一下自己在调试IIC的时候遇到的问题</h1>
+              <h1
+id="记录一下自己在调试iic的时候遇到的问题">记录一下自己在调试IIC的时候遇到的问题</h1>
 <p><strong>切记，不要把不同的IIC底层代码混用，每一个模拟IIC都是一个整体，内部的函数之间都是有联系的，如果混用之后,可能会导致IIC通信出现问题。</strong></p>
 <p>[TOC]</p>
 <h2 id="拿来主义">拿来主义</h2>
@@ -310,7 +311,8 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs objectivec"><span class="hljs-keyword">void</span> <span class="hljs-built_in">MPU_IIC_Init</span>(<span class="hljs-keyword">void</span>)<br>&#123;<br>    GPIO_InitTypeDef GPIO_Initure;<br><br>    __HAL_RCC_GPIOC_CLK_ENABLE();<br>    GPIO_Initure.Pin = GPIO_PIN_0 | GPIO_PIN_1;<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> USING_PP    <span class="hljs-comment">// 使用推挽输出</span></span><br>    GPIO_Initure.Mode = GPIO_MODE_OUTPUT_PP;<br>    <span class="hljs-comment">// GPIO_Initure.Pull = GPIO_PULLUP;     // 一般IIC设备SCL和SDA 接上拉电阻</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">else</span></span><br>    GPIO_Initure.Mode = GPIO_MODE_OUTPUT_OD;    <span class="hljs-comment">// 开漏输出模式</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br>    GPIO_Initure.Speed = GPIO_SPEED_FREQ_HIGH;<br><br>    HAL_GPIO_Init(GPIOC, &amp;GPIO_Initure);<br><br>    <span class="hljs-built_in">MPU_IIC_SCL</span> = <span class="hljs-number">1</span>;<br>    <span class="hljs-built_in">MPU_IIC_SDA</span> = <span class="hljs-number">1</span>;    <span class="hljs-comment">// 总线空闲状态</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>将一个IIC推挽模式的代码改成开漏模式的，不是仅仅将引脚推挽改成引脚开漏，去掉输入输出切换那么简单（实测）</p></li>
 </ul>
-<h2 id="我的iic代码-宏定义切换推挽模式还是开漏模式">我的IIC代码 （宏定义切换推挽模式还是开漏模式）</h2>
+<h2 id="我的iic代码-宏定义切换推挽模式还是开漏模式">我的IIC代码
+（宏定义切换推挽模式还是开漏模式）</h2>
 <ul>
 <li><p>代码中涉及到的延时和位带操作参考正点原子的STM32代码</p></li>
 <li><p>iic.c</p></li>

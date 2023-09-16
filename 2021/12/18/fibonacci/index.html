@@ -258,13 +258,14 @@
             
             <div class="markdown-body">
               <h3 id="求特征方程">1、求特征方程</h3>
-<p>设有数列 $ c[n] = a * c[n - 1] + b * c[n - 2]$, 假设存在 <span class="math inline">\(x, y\)</span> 满足下式<br />
+<p>设有数列 $ c[n] = a * c[n - 1] + b * c[n - 2]$, 假设存在 <span
+class="math inline">\(x, y\)</span> 满足下式<br />
 <span class="math display">\[
 c[n]-x*c[n - 1] = y*(c[n - 1] - x*c[n - 2])
 \]</span><br />
 变形得<br />
 <span class="math display">\[
- c[n] = (x + y) * c[n - 1] -xy * c[n - 2]
+c[n] = (x + y) * c[n - 1] -xy * c[n - 2]
 \]</span><br />
 则对于斐波那契数列则有<br />
 <span class="math display">\[
@@ -273,14 +274,16 @@ x + y &amp;=&amp; 1 \\
 -xy&amp;=&amp;1
 \end{eqnarray*}
 \]</span></p>
-<p>消去 <span class="math inline">\(y\)</span> 得 <span class="math inline">\(x^2=x+1\)</span></p>
+<p>消去 <span class="math inline">\(y\)</span> 得 <span
+class="math inline">\(x^2=x+1\)</span></p>
 <p>有根<br />
 <span class="math display">\[
 X_{1,2}=\frac{1\pm\sqrt{5}}{2}
 \]</span></p>
 <p>所以存在 <span class="math inline">\(A, B\)</span> 使<br />
 <span class="math display">\[
-c[n] = A \times \left( \frac{1 + \sqrt{5}}{2} \right) ^{n} - B \times \left( \frac{1 - \sqrt{5}}{2} \right) ^{n}
+c[n] = A \times \left( \frac{1 + \sqrt{5}}{2} \right) ^{n} - B \times
+\left( \frac{1 - \sqrt{5}}{2} \right) ^{n}
 \]</span><br />
 代入<span class="math inline">\(c[0] = 0, c[1] = 1\)</span>,得<br />
 <span class="math display">\[
@@ -288,7 +291,9 @@ A = \frac{\sqrt{5}}{5}, B = - \frac{\sqrt{5}}{5}
 \]</span><br />
 即通项公式为<br />
 <span class="math display">\[
-c[n] = \frac{\sqrt{5}}{5} \times \left(\frac{1 + \sqrt{5}}{2}\right) ^ {n} - \frac{\sqrt{5}}{5} \times \left(\frac{1 - \sqrt{5}}{2}\right) ^ {n}
+c[n] = \frac{\sqrt{5}}{5} \times \left(\frac{1 + \sqrt{5}}{2}\right) ^
+{n} - \frac{\sqrt{5}}{5} \times \left(\frac{1 - \sqrt{5}}{2}\right) ^
+{n}
 \]</span></p>
 <h5 id="tips">Tips</h5>
 <blockquote>
@@ -301,7 +306,8 @@ gcd(F[n], F[m]) = F[gcd(n, m)]
 \]</span></p>
 </blockquote>
 <h4 id="证明">证明：</h4>
-<p>设<span class="math inline">\(n &lt; m, F[n] = a, F[n + 1] = b\)</span>,则有<br />
+<p>设<span class="math inline">\(n &lt; m, F[n] = a, F[n + 1] =
+b\)</span>,则有<br />
 <span class="math display">\[
 \begin{eqnarray*}
 F[n + 2] &amp;=&amp; a + b \\
@@ -316,7 +322,8 @@ F[n + 5] &amp;=&amp; 3a + 5b\\
 F[m] = F[m-n-1] \times F[n] + F[m-n] \times F[n+1]
 \]</span></p>
 <p><span class="math display">\[
-gcd(F[n],F[m]) = gcd(F[n],  F[m - n -1] \times F[n] + F[m - n] \times F[n + 1] )
+gcd(F[n],F[m]) = gcd(F[n],  F[m - n -1] \times F[n] + F[m - n] \times
+F[n + 1] )
 \]</span></p>
 <p>化简则有<br />
 <span class="math display">\[

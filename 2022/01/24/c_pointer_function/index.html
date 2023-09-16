@@ -270,7 +270,10 @@
 <li>来自WIKI的解释</li>
 </ul>
 <blockquote>
-<p>A <strong>function pointer</strong>, also called a <strong>subroutine pointer</strong> or <strong>procedure pointer</strong>, is a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Pointer_(computer_programming)">pointer</a> that points to a function.</p>
+<p>A <strong>function pointer</strong>, also called a <strong>subroutine
+pointer</strong> or <strong>procedure pointer</strong>, is a <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Pointer_(computer_programming)">pointer</a>
+that points to a function.</p>
 <p>函数指针，也称为子程序指针或过程指针，是指向函数的指针。</p>
 </blockquote>
 <ul>
@@ -283,14 +286,29 @@
 <li>来自WIKI的解释</li>
 </ul>
 <blockquote>
-<p>In <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Computer_programming">computer programming</a>, a <strong>callback</strong>, also known as a &quot;<strong>call-after</strong>&quot;[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Callback_(computer_programming)#cite_note-1">1]</a> <strong>function</strong>, is any reference to <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Executable_code">executable code</a> that is passed as an <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Argument_(computer_science)">argument</a> to other code; that other code is expected to <em>call back</em> (execute) the code at a given time. This execution may be immediate as in a <strong>synchronous callback</strong>, or it might happen at a later point in time as in an <strong>asynchronous callback</strong>.</p>
-<p>在计算机编程中，回调，也称为“call-after”[1] 函数，是对作为参数传递给其他代码的可执行代码的任何引用；预计其他代码会在给定时间回调（执行）该代码。此执行可能像在同步回调中那样立即执行，也可能像在异步回调中那样在稍后的时间点发生。</p>
+<p>In <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Computer_programming">computer
+programming</a>, a <strong>callback</strong>, also known as a
+"<strong>call-after</strong>"[<a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Callback_(computer_programming)#cite_note-1">1]</a>
+<strong>function</strong>, is any reference to <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Executable_code">executable code</a>
+that is passed as an <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Argument_(computer_science)">argument</a>
+to other code; that other code is expected to <em>call back</em>
+(execute) the code at a given time. This execution may be immediate as
+in a <strong>synchronous callback</strong>, or it might happen at a
+later point in time as in an <strong>asynchronous callback</strong>.</p>
+<p>在计算机编程中，回调，也称为“call-after”[1]
+函数，是对作为参数传递给其他代码的可执行代码的任何引用；预计其他代码会在给定时间回调（执行）该代码。此执行可能像在同步回调中那样立即执行，也可能像在异步回调中那样在稍后的时间点发生。</p>
 </blockquote>
 <ul>
 <li>另一个不错的解释</li>
 </ul>
 <blockquote>
-<p>A &quot;callback&quot; is any function that is <strong>called</strong> by another function <strong>which takes the first function as a parameter</strong></p>
+<p>A "callback" is any function that is <strong>called</strong> by
+another function <strong>which takes the first function as a
+parameter</strong></p>
 </blockquote>
 <ul>
 <li>实例代码</li>
@@ -298,9 +316,13 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Date         : 2022-01-24 15:26:35</span><br><span class="hljs-comment"> * @LastEditors  : liu wei</span><br><span class="hljs-comment"> * @LastEditTime : 2022-01-24 15:54:44</span><br><span class="hljs-comment"> * @brief        : 带参数的回调函数和不带参数的回调函数</span><br><span class="hljs-comment"> * @FilePath     : \new_vscode\code\2.cpp</span><br><span class="hljs-comment"> * @Github       : https://github.com/Blackerrr</span><br><span class="hljs-comment"> * @Coding       : utf-8</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdlib&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">// 功能 产生随机数</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Callback</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">rand</span>(); <span class="hljs-comment">// 默认的seed是1</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Callback_1</span><span class="hljs-params">(<span class="hljs-keyword">int</span> seed)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">srand</span>(seed); <span class="hljs-comment">// 生成随机数之前先进行播种</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">rand</span>();<br>&#125;<br><br><span class="hljs-comment">// 无参数的回调函数</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get_rand</span><span class="hljs-params">(<span class="hljs-keyword">int</span> (*func)())</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">func</span>();<br>&#125;<br><br><span class="hljs-comment">// 有参数的回调函数</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get_rand1</span><span class="hljs-params">(<span class="hljs-keyword">int</span> seed, <span class="hljs-keyword">int</span> (*func)(<span class="hljs-keyword">int</span>))</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">func</span>(seed);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> seed;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;seed);<br><br>    <span class="hljs-comment">// 回调函数是函数指针的一种用法</span><br>    <span class="hljs-keyword">int</span> a = <span class="hljs-built_in">get_rand</span>(Callback);          <span class="hljs-comment">// 无参数的回调函数   </span><br>    <span class="hljs-keyword">int</span> b = <span class="hljs-built_in">get_rand1</span>(seed, Callback_1); <span class="hljs-comment">// 有参数的回调函数</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>, a, b);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="参考">参考</h2>
 <ul>
-<li><p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/c-callback-function.html">C 语言回调函数详解</a></p></li>
-<li><p><a target="_blank" rel="noopener" href="https://www.runoob.com/cprogramming/c-fun-pointer-callback.html">函数指针与回调函数</a></p></li>
-<li><p><a target="_blank" rel="noopener" href="https://houbb.github.io/2020/05/08/c-lang-16-fun-pointer-callback">C语言学习笔记-16-函数指针与回调函数</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/c-callback-function.html">C
+语言回调函数详解</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://www.runoob.com/cprogramming/c-fun-pointer-callback.html">函数指针与回调函数</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://houbb.github.io/2020/05/08/c-lang-16-fun-pointer-callback">C语言学习笔记-16-函数指针与回调函数</a></p></li>
 </ul>
 
             </div>
